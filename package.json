@@ -1,11 +1,12 @@
 {
   "name": "mocha-unit-testing",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "test": "mocha tests/unitTest.js"
+    "pretest": "set NODE_ENV=test&& npx sequelize-cli db:create && npx sequelize-cli db:migrate",
+    "test": "set NODE_ENV=test&& mocha tests/unitTest.js && npx sequelize db:drop"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
